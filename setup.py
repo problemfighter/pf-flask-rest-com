@@ -1,4 +1,15 @@
 from setuptools import setup, find_packages
+import pathlib
+
+CURRENT_DIR = pathlib.Path(__file__).parent
+README = (CURRENT_DIR / "readme.adoc").read_text()
+
+
+def get_dependencies():
+    return [
+        'Marshmallow',
+    ]
+
 
 setup(
     name='PF-Flask-Rest-Com',
@@ -8,12 +19,13 @@ setup(
     author='Problem Fighter',
     author_email='problemfighter.com@gmail.com',
     description='Flask REST API Common Implementation by Problem Fighter Library',
-    long_description=__doc__,
+    long_description=README,
+    long_description_content_type='text/adoc',
     packages=find_packages(),
     zip_safe=False,
     include_package_data=True,
     platforms='any',
-    install_requires=[],
+    install_requires=get_dependencies(),
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
