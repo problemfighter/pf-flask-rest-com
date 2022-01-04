@@ -1,5 +1,12 @@
 from setuptools import setup, find_packages
 
+
+def get_dependencies():
+    return [
+        'Marshmallow',
+    ]
+
+
 setup(
     name='PF-Flask-Rest-Com',
     version='1.0.0',
@@ -13,7 +20,7 @@ setup(
     zip_safe=False,
     include_package_data=True,
     platforms='any',
-    install_requires=[],
+    install_requires=get_dependencies(),
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
