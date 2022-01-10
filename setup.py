@@ -1,14 +1,24 @@
+import os
+
 from setuptools import setup, find_packages
 import pathlib
 
 CURRENT_DIR = pathlib.Path(__file__).parent
 README = (CURRENT_DIR / "readme.adoc").read_text()
 
+env = os.environ.get('dev')
+
 
 def get_dependencies():
-    return [
+    dependency = [
+        'Flask',
         'Marshmallow',
     ]
+
+    if env and env == "dev":
+        return dependency
+
+    return dependency + ["PF-PY-Common"]
 
 
 setup(
