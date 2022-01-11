@@ -1,5 +1,6 @@
 import json
-from flask import make_response
+from flask import make_response, send_file
+import typing as t
 from pf_flask_rest_com.common.pf_flask_rest_com_const import RestComConst
 
 
@@ -29,3 +30,9 @@ class ResponseHelper:
         except Exception as e:
             response_string = "{}"
         return self.json_string_response(response_string, code, headers)
+
+    def file_response(self, file_path, download_name: t.Optional[str] = None):
+        return send_file(file_path, download_name=download_name)
+
+
+response_helper = ResponseHelper()
