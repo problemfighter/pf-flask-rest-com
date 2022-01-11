@@ -34,5 +34,8 @@ class ResponseHelper:
     def file_response(self, file_path, download_name: t.Optional[str] = None):
         return send_file(file_path, download_name=download_name)
 
+    def text_response(self, text: str, code=200, headers: dict = None):
+        return self.response(text, code=code, headers=headers)
+
 
 response_helper = ResponseHelper()

@@ -28,5 +28,11 @@ def file_response():
     return response_helper.file_response(file, download_name="readme.adoc")
 
 
+@app.route('/text-response')
+def text_response():
+    text = "String Response"
+    return response_helper.text_response(text)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
