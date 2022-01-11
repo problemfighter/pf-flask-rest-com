@@ -26,3 +26,14 @@ class RequestHelper:
         if data:
             return data
         return default
+
+    def get_query_data_value(self, key: str, default=None):
+        data = self.query_data(default=None)
+        if not data:
+            return default
+        if key in data:
+            return data[key]
+        return default
+
+
+request_helper = RequestHelper()
