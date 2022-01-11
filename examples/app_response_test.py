@@ -1,8 +1,5 @@
 import os
-
 from flask import Flask
-
-from pf_flask_rest_com.pf_flask_request_helper import request_helper
 from pf_flask_rest_com.pf_flask_response_helper import response_helper
 
 app = Flask(__name__)
