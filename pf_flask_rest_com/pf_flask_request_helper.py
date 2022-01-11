@@ -27,12 +27,15 @@ class RequestHelper:
             return data
         return default
 
-    def get_query_data_value(self, key: str, default=None):
+    def get_query_params_value(self, key: str, default=None, type=None):
         data = self.query_data(default=None)
         if not data:
             return default
         if key in data:
-            return data[key]
+            value = data.getlist(key, type)
+            if len(value) == 1:
+                return value[0]
+            return value
         return default
 
 

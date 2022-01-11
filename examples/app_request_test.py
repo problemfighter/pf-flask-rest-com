@@ -22,9 +22,16 @@ def query_data():
 @app.route('/get-query-data-value')
 def get_query_data_value():
     return {
-        "name": request_helper.get_query_data_value('name'),
-        "age": request_helper.get_query_data_value('age'),
-        "noData": request_helper.get_query_data_value('noData', 'noData'),
+        "name": request_helper.get_query_params_value('name'),
+        "age": request_helper.get_query_params_value('age'),
+        "noData": request_helper.get_query_params_value('noData', 'noData'),
+    }
+
+
+@app.route('/query-data-list')
+def query_data_list():
+    return {
+        "name": request_helper.get_query_params_value('name')
     }
 
 

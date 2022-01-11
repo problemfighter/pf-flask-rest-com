@@ -22,6 +22,15 @@ def test__get_query_data_value():
     assert response_data["noData"] == "noData"
 
 
+def test__query_data_list():
+    response = requests.get(BASE_URL + "query-data-list?age=7&name=hmtmcse.com&name=problemfighter.com&name=banglafighter.com")
+    response_data = response.json()
+
+    assert response.status_code == 200, "Should be 200"
+    assert isinstance(response_data["name"], list)
+
+
 if __name__ == '__main__':
     test__query_data()
     test__get_query_data_value()
+    test__query_data_list()
