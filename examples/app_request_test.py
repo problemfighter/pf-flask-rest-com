@@ -35,29 +35,30 @@ def query_data_list():
     }
 
 
-@app.route('/json-data')
+@app.route('/json-data', methods=['POST'])
 def json_data():
-    return "Flask Request Test......"
+    return request_helper.json_data()
 
 
-@app.route('/form-data')
+@app.route('/form-data', methods=['POST'])
 def form_data():
-    return "Flask Request Test......"
+    return request_helper.form_data()
 
 
-@app.route('/file-data')
+@app.route('/file-data', methods=['POST'])
 def file_data():
-    return "Flask Request Test......"
+    response = request_helper.file_data()
+    return {
+        "filename": response["note"].filename
+    }
 
 
-# @app.route('/')
-# def bismillah():
-#     return "Flask Request Test......"
-#
-#
-# @app.route('/')
-# def bismillah():
-#     return "Flask Request Test......"
+@app.route('/file-and-form-data', methods=['POST'])
+def file_and_form_data():
+    response = request_helper.form_and_file_data()
+    response["filename"] = response["note"].filename
+    del response["note"]
+    return response
 
 
 if __name__ == '__main__':
