@@ -2,20 +2,20 @@ from marshmallow import fields
 from pf_flask_rest_com.api_def import APIDef
 
 
-class PFFRBaseAPIResponse(APIDef):
+class PFFRCBaseAPIResponse(APIDef):
     status = fields.String()
     code = fields.String()
 
 
-class PFFRMessageAPIResponse(PFFRBaseAPIResponse):
+class PFFRCMessageAPIResponse(PFFRCBaseAPIResponse):
     message = fields.String()
 
 
-class PFFRErrorAPIResponse(PFFRMessageAPIResponse):
+class PFFRCErrorAPIResponse(PFFRCMessageAPIResponse):
     error = fields.Dict(keys=fields.String(), values=fields.String())
 
 
-class PFFRDataAPIResponse(PFFRBaseAPIResponse):
+class PFFRCDataAPIResponse(PFFRCBaseAPIResponse):
     data = fields.Dict(keys=fields.String(), values=fields.String())
 
 
@@ -26,5 +26,5 @@ class Pagination(APIDef):
     totalPage = fields.Integer()
 
 
-class PFFRPaginateAPIResponse(PFFRDataAPIResponse):
+class PFFRCPaginateAPIResponse(PFFRCDataAPIResponse):
     pagination = fields.Nested(Pagination)
