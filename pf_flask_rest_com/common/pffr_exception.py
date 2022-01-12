@@ -1,5 +1,5 @@
 from pf_flask_rest_com.data.pffrc_response_data import PFFRCMessageResponse, PFFRCErrorResponse
-from pf_flask_rest_com.data.pffrc_response_status import PFFRCResponseCode, PFFRCHTTPCode
+from pf_flask_rest_com.data.pffrc_response_status import PFFRCResponseCode, PFFRCHTTPCode, PFFRCResponseStatus
 from pf_py_common.pf_exception import PFException
 
 
@@ -14,6 +14,7 @@ class PFFRCException(PFException):
         response = PFFRCMessageResponse()
         response.message = message
         response.code = code
+        response.status = PFFRCResponseStatus.error
         response.http_code = http_code
         self.messageResponse = response
         return self
@@ -22,6 +23,7 @@ class PFFRCException(PFException):
         response = PFFRCErrorResponse()
         response.message = message
         response.code = code
+        response.status = PFFRCResponseStatus.error
         response.http_code = http_code
         response.error = details
         self.messageResponse = response
