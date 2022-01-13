@@ -27,10 +27,14 @@ class PFFRCErrorResponse(PFFRCMessageResponse):
 
 
 class PFFRCDataResponse(PFFRCBaseResponse):
+    _schema = PFFRCDataAPIResponse()
     data = None
 
+    def add_data(self, model, schema: APIDef, many=False):
+        self.data = schema.dump(model, many=many)
+
     def to_dict(self):
-        return self.make_dict(self, PFFRCDataAPIResponse())
+        return self.make_dict(self, self._schema)
 
 
 class PFFRCPagination(object):

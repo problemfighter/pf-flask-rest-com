@@ -16,7 +16,7 @@ class PFFRCErrorAPIResponse(PFFRCMessageAPIResponse):
 
 
 class PFFRCDataAPIResponse(PFFRCBaseAPIResponse):
-    data = fields.Dict(keys=fields.String(), values=fields.String())
+    data = fields.Dict()
 
 
 class Pagination(APIDef):
