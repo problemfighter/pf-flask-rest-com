@@ -14,16 +14,16 @@ class ResponseHelper:
 
     def json_string_response(self, json_string: str, code=200, headers: dict = None):
         _headers = {
-            RestComConst.CONTENT_TYPE: RestComConst.APPLICATION_JSON
+            RestComConst.CONTENT_TYPE: RestComConst.APPLICATION_JSON,
         }
         if headers and isinstance(headers, dict):
             _headers.update(headers)
         return self.response(json_string, code=code, headers=_headers)
 
-    def json_response(self, obj, code=200, headers: dict = None):
+    def json_response(self, dictionary, code=200, headers: dict = None):
         json_object = {}
-        if obj:
-            json_object = obj
+        if dictionary:
+            json_object = dictionary
         response_string = "{}"
         try:
             response_string = json.dumps(json_object)
