@@ -2,7 +2,8 @@ from marshmallow import Schema, fields
 
 
 class APIDef(Schema):
-    pass
+    class Meta:
+        ordered = True
 
 
 class FileField(fields.String):
