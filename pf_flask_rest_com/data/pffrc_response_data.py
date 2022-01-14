@@ -1,5 +1,4 @@
 from marshmallow import fields
-
 from pf_flask_rest_com.api_def import APIDef
 from pf_flask_rest_com.schema.pffrc_response_schema import PFFRCMessageAPIResponse, PFFRCErrorAPIResponse, \
     PFFRCDataAPIResponse, PFFRCPaginateAPIResponse
