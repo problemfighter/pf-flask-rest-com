@@ -1,6 +1,9 @@
+from marshmallow import fields
+
 from pf_flask_rest_com.api_def import APIDef
 from pf_flask_rest_com.schema.pffrc_response_schema import PFFRCMessageAPIResponse, PFFRCErrorAPIResponse, \
     PFFRCDataAPIResponse, PFFRCPaginateAPIResponse
+from pf_flask_rest_com.schema.pffrc_schema_helper import pffrc_schema_helper
 
 
 class PFFRCBaseResponse:
@@ -31,6 +34,8 @@ class PFFRCDataResponse(PFFRCBaseResponse):
     data = None
 
     def add_data(self, model, schema: APIDef, many=False):
+        if many:
+            self._schema = pffrc_schema_helper.change_schema_field_type(self._schema, "data", fields.List(fields.Dict))
         self.data = schema.dump(model, many=many)
 
     def to_dict(self):
@@ -45,7 +50,8 @@ class PFFRCPagination(object):
 
 
 class PFFRCPaginateResponse(PFFRCDataResponse):
+    _schema = PFFRCPaginateAPIResponse()
     pagination: PFFRCPagination = None
 
     def to_dict(self):
-        return self.make_dict(self, PFFRCPaginateAPIResponse())
+        return self.make_dict(self, self._schema)

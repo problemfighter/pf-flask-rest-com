@@ -6,6 +6,9 @@ class PFFRCBaseAPIResponse(APIDef):
     status = fields.String()
     code = fields.String()
 
+    class Meta:
+        ordered = True
+
 
 class PFFRCMessageAPIResponse(PFFRCBaseAPIResponse):
     message = fields.String()
