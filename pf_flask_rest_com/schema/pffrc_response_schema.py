@@ -3,11 +3,11 @@ from pf_flask_rest_com.api_def import APIDef
 
 
 class PFFRCBaseAPIResponse(APIDef):
-    status = fields.String()
-    code = fields.String()
-
     class Meta:
         ordered = True
+
+    status = fields.String()
+    code = fields.String()
 
 
 class PFFRCMessageAPIResponse(PFFRCBaseAPIResponse):
@@ -31,3 +31,4 @@ class Pagination(APIDef):
 
 class PFFRCPaginateAPIResponse(PFFRCDataAPIResponse):
     pagination = fields.Nested(Pagination)
+
