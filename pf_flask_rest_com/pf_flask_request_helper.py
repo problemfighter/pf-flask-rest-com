@@ -65,6 +65,9 @@ class RequestHelper:
     def is_post(self):
         return 'POST' == self.get_method()
 
+    def is_get(self):
+        return 'GET' == self.get_method()
+
     def get_current_url(self):
         return request.referrer
 
