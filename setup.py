@@ -23,7 +23,7 @@ def get_dependencies():
 
 setup(
     name='PF-Flask-Rest-Com',
-    version='1.0.1',
+    version='1.0.2',
     url='https://github.com/problemfighter/pf-flask-rest-com',
     license='Apache 2.0',
     author='Problem Fighter',
