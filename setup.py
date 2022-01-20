@@ -6,7 +6,7 @@ import pathlib
 CURRENT_DIR = pathlib.Path(__file__).parent
 README = (CURRENT_DIR / "readme.adoc").read_text()
 
-env = os.environ.get('dev')
+env = os.environ.get('source')
 
 
 def get_dependencies():
