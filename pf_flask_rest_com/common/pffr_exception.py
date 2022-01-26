@@ -8,9 +8,13 @@ class PFFRCException(PFException):
     errorResponse: PFFRCErrorResponse
 
     def __init__(self, message=None, exception_type: str = None):
+        self._set_super(message, exception_type)
+
+    def _set_super(self, message=None, exception_type: str = None):
         super().__init__(message, exception_type)
 
     def error_message_exception(self, message: str, code=PFFRCResponseCode.error, http_code=PFFRCHTTPCode.OK):
+        self._set_super(message)
         response = PFFRCMessageResponse()
         response.message = message
         response.code = code
@@ -20,6 +24,7 @@ class PFFRCException(PFException):
         return self
 
     def error_details_exception(self, message: str, details: dict, code=PFFRCResponseCode.error, http_code=PFFRCHTTPCode.OK):
+        self._set_super(message)
         response = PFFRCErrorResponse()
         response.message = message
         response.code = code
