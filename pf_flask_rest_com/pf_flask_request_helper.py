@@ -94,8 +94,8 @@ class RequestHelper:
     def get_url_info(self) -> PFFRCRequestInfo:
         url_dictionary = PFFRCRequestInfo()
         if request and request.url:
-            if request.url_rule:
-                url_dictionary.relativeURL = str(request.url_rule)
+            if request.path:
+                url_dictionary.relativeURL = str(request.path)
             url_dictionary.relativeURLWithParam = str(request.full_path)
             url_dictionary.hostWithPort = str(request.host)
             url_dictionary.method = str(request.method)
