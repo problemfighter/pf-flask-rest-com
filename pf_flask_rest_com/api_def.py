@@ -14,8 +14,7 @@ class FileField(fields.String):
     allowed_extensions: list = None
 
     default_error_messages = {
-        "invalid": "Not a valid file.",
-        "invalid_utf8": "Not a valid utf-8 string.",
+        "invalid": "Not a valid file."
     }
 
     def set_max_size_kb(self, size: int):
