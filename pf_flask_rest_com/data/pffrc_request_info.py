@@ -4,3 +4,4 @@ class PFFRCRequestInfo(object):
     hostWithPort: str = None
     method: str = None
     charset: str = None
+    baseURL: str = None
