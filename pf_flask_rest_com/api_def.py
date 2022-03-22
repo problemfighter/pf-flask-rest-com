@@ -31,10 +31,12 @@ class FileField(fields.String):
         return self
 
     def _deserialize(self, value, attr, data, **kwargs) -> typing.Any:
-        if self.is_multiple:
+        if self.is_multiple and isinstance(value, list):
             for file in value:
                 if not isinstance(file, FileStorage):
                     raise self.make_error("invalid")
-        elif not isinstance(value, FileStorage):
+            return value
+
+        if not isinstance(value, FileStorage):
             raise self.make_error("invalid")
         return value
