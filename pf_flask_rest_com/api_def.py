@@ -12,6 +12,7 @@ class APIDef(Schema):
 class FileField(fields.String):
     max_size_kb: int = None
     allowed_extensions: list = None
+    is_multiple: bool = False
 
     default_error_messages = {
         "invalid": "Not a valid file."
@@ -25,7 +26,15 @@ class FileField(fields.String):
         self.allowed_extensions = extension
         return self
 
+    def allow_multiple(self):
+        self.is_multiple = True
+        return self
+
     def _deserialize(self, value, attr, data, **kwargs) -> typing.Any:
-        if not isinstance(value, FileStorage):
+        if self.is_multiple:
+            for file in value:
+                if not isinstance(file, FileStorage):
+                    raise self.make_error("invalid")
+        elif not isinstance(value, FileStorage):
             raise self.make_error("invalid")
         return value
