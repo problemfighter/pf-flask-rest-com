@@ -22,6 +22,10 @@ class PFFRCDataAPIResponse(PFFRCBaseAPIResponse):
     data = fields.Dict()
 
 
+class PFFRCDataListAPIResponse(PFFRCBaseAPIResponse):
+    data = fields.List(fields.Dict)
+
+
 class Pagination(APIDef):
     page = fields.Integer()
     itemPerPage = fields.Integer()

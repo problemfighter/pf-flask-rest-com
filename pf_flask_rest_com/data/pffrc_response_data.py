@@ -1,8 +1,8 @@
 from marshmallow import fields
 from pf_flask_rest_com.api_def import APIDef
 from pf_flask_rest_com.schema.pffrc_response_schema import PFFRCMessageAPIResponse, PFFRCErrorAPIResponse, \
-    PFFRCDataAPIResponse, PFFRCPaginateAPIResponse
-from pf_flask_rest_com.schema.pffrc_schema_helper import pffrc_schema_helper
+    PFFRCDataAPIResponse, PFFRCPaginateAPIResponse, PFFRCDataListAPIResponse
+from pf_flask_rest_com.schema.pffrc_schema_helper import PFFRCSchemaHelper
 
 
 class PFFRCBaseResponse:
@@ -34,7 +34,10 @@ class PFFRCDataResponse(PFFRCBaseResponse):
 
     def add_data(self, model, schema: APIDef, many=False):
         if many:
-            self._schema = pffrc_schema_helper.change_schema_field_type(self._schema, "data", fields.List(fields.Dict))
+            self._schema = PFFRCDataListAPIResponse()
+        else:
+            self._schema = PFFRCDataAPIResponse()
+
         if model:
             self.data = schema.dump(model, many=many)
 
