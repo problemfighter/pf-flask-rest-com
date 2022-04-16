@@ -33,6 +33,6 @@ class Pagination(APIDef):
     totalPage = fields.Integer()
 
 
-class PFFRCPaginateAPIResponse(PFFRCDataAPIResponse):
-    pagination = fields.Nested(Pagination)
+class PFFRCPaginateAPIResponse(PFFRCDataListAPIResponse):
+    pagination = fields.Nested(Pagination())
 

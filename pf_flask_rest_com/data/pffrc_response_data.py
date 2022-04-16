@@ -37,7 +37,9 @@ class PFFRCDataResponse(PFFRCBaseResponse):
             self._schema = PFFRCDataListAPIResponse()
         else:
             self._schema = PFFRCDataAPIResponse()
+        self.add_only_data(model, schema, many)
 
+    def add_only_data(self, model, schema: APIDef, many=False):
         if model:
             self.data = schema.dump(model, many=many)
 
