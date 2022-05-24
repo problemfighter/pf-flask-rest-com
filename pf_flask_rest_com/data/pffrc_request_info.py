@@ -5,3 +5,4 @@ class PFFRCRequestInfo(object):
     method: str = None
     charset: str = None
     baseURL: str = None
+    urlRule: str = None
