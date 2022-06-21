@@ -6,6 +6,11 @@ from pf_flask_rest_com.data.pffrc_request_info import PFFRCRequestInfo
 
 class RequestHelper:
 
+    def _parse_value(self, value):
+        if value == "null" or value == "None":
+            return None
+        return value
+
     def immutable_multi_dict_to_dict(self, _input: ImmutableMultiDict, default=None):
         if not _input:
             return default
@@ -13,9 +18,9 @@ class RequestHelper:
         response = {}
         for data in requested_data:
             if len(requested_data[data]) == 1:
-                response[data] = requested_data[data][0]
+                response[data] = self._parse_value(requested_data[data][0])
             else:
-                response[data] = requested_data[data]
+                response[data] = self._parse_value(requested_data[data])
         return response
 
     def json_data(self, default=None):
