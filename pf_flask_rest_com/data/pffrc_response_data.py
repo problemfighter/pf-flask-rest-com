@@ -7,6 +7,7 @@ class PFFRCBaseResponse:
     status: str = None
     code: str = None
     httpCode: int = None
+    message: str = None
 
     def make_dict(self, data, api_def: APIDef, many=False):
         return api_def.dumps(data, many=many)
