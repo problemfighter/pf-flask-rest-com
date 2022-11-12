@@ -19,6 +19,7 @@ class PFFRCErrorAPIResponse(PFFRCMessageAPIResponse):
 
 
 class PFFRCDataAPIResponse(PFFRCBaseAPIResponse):
+    message = fields.String()
     data = fields.Dict()
 
 
