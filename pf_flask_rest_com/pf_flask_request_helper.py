@@ -106,7 +106,7 @@ class RequestHelper:
             url_dictionary.method = str(request.method)
             url_dictionary.charset = str(request.url_charset)
             url_dictionary.urlRule = str(request.url_rule)
-            url_dictionary.baseURL = str(request.base_url).replace(url_dictionary.relativeURL, "")
+            url_dictionary.baseURL = str(request.host_url).strip("/")
         return url_dictionary
 
 
