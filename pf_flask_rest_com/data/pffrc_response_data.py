@@ -29,7 +29,10 @@ class PFFRCErrorResponse(PFFRCMessageResponse):
 
 class PFFRCDataResponse(PFFRCBaseResponse):
     _schema = PFFRCDataAPIResponse()
-    data = None
+    data: any
+
+    def __init__(self):
+        self.data = None
 
     def add_data(self, model, schema: APIDef, many=False):
         if many:
